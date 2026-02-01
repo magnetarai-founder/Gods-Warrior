@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "source": "American Standard Version (1901)",
+  "verses": [
+    {
+      "id": "jos-1-9",
+      "text": "Have not I commanded thee? Be strong and of good courage; be not affrighted, neither be thou dismayed: for Jehovah thy God is with thee whithersoever thou goest.",
+      "reference": "Joshua 1:9",
+      "theme": "courage",
+      "bookOrder": 6,
+      "dayIndex": 0
+    },
+    {
+      "id": "eph-6-10",
+      "text": "Finally, be strong in the Lord, and in the strength of his might.",
+      "reference": "Ephesians 6:10",
+      "theme": "strength",
+      "bookOrder": 49,
+      "dayIndex": 1
+    },
+    {
+      "id": "phil-4-13",
+      "text": "I can do all things in him that strengtheneth me.",
+      "reference": "Philippians 4:13",
+      "theme": "strength",
+      "bookOrder": 50,
+      "dayIndex": 2
+    },
+    {
+      "id": "isa-40-31",
+      "text": "But they that wait for Jehovah shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; they shall walk, and not faint.",
+      "reference": "Isaiah 40:31",
+      "theme": "endurance",
+      "bookOrder": 23,
+      "dayIndex": 3
+    },
+    {
+      "id": "2tim-4-7",
+      "text": "I have fought the good fight, I have finished the course, I have kept the faith.",
+      "reference": "2 Timothy 4:7",
+      "theme": "endurance",
+      "bookOrder": 55,
+      "dayIndex": 4
+    },
+    {
+      "id": "heb-12-1",
+      "text": "Therefore let us also, seeing we are compassed about with so great a cloud of witnesses, lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us.",
+      "reference": "Hebrews 12:1",
+      "theme": "endurance",
+      "bookOrder": 58,
+      "dayIndex": 5
+    },
+    {
+      "id": "ps-18-32",
+      "text": "The God that girdeth me with strength, And maketh my way perfect.",
+      "reference": "Psalm 18:32",
+      "theme": "strength",
+      "bookOrder": 19,
+      "dayIndex": 6
+    },
+    {
+      "id": "1cor-9-24",
+      "text": "Know ye not that they that run in a race run all, but one receiveth the prize? Even so run; that ye may attain.",
+      "reference": "1 Corinthians 9:24",
+      "theme": "discipline",
+      "bookOrder": 46,
+      "dayIndex": 7
+    },
+    {
+      "id": "1cor-9-27",
+      "text": "But I buffet my body, and bring it into bondage: lest by any means, after that I have preached to others, I myself should be rejected.",
+      "reference": "1 Corinthians 9:27",
+      "theme": "discipline",
+      "bookOrder": 46,
+      "dayIndex": 8
+    },
+    {
+      "id": "ps-28-7",
+      "text": "Jehovah is my strength and my shield; My heart hath trusted in him, and I am helped: Therefore my heart greatly rejoiceth; And with my song will I praise him.",
+      "reference": "Psalm 28:7",
+      "theme": "strength",
+      "bookOrder": 19,
+      "dayIndex": 9
+    },
+    {
+      "id": "rom-5-3-4",
+      "text": "And not only so, but we also rejoice in our tribulations: knowing that tribulation worketh stedfastness; and stedfastness, approvedness; and approvedness, hope.",
+      "reference": "Romans 5:3-4",
+      "theme": "perseverance",
+      "bookOrder": 45,
+      "dayIndex": 10
+    },
+    {
+      "id": "james-1-2-4",
+      "text": "Count it all joy, my brethren, when ye fall into manifold temptations; knowing that the proving of your faith worketh patience. And let patience have its perfect work, that ye may be perfect and entire, lacking in nothing.",
+      "reference": "James 1:2-4",
+      "theme": "perseverance",
+      "bookOrder": 59,
+      "dayIndex": 11
+    },
+    {
+      "id": "deut-31-6",
+      "text": "Be strong and of good courage, fear not, nor be affrighted at them: for Jehovah thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee.",
+      "reference": "Deuteronomy 31:6",
+      "theme": "courage",
+      "bookOrder": 5,
+      "dayIndex": 12
+    },
+    {
+      "id": "ps-27-14",
+      "text": "Wait for Jehovah: Be strong, and let thy heart take courage; Yea, wait thou for Jehovah.",
+      "reference": "Psalm 27:14",
+      "theme": "courage",
+      "bookOrder": 19,
+      "dayIndex": 13
+    },
+    {
+      "id": "1tim-4-8",
+      "text": "For bodily exercise is profitable for a little; but godliness is profitable for all things, having promise of the life which now is, and of that which is to come.",
+      "reference": "1 Timothy 4:8",
+      "theme": "discipline",
+      "bookOrder": 54,
+      "dayIndex": 14
+    },
+    {
+      "id": "gal-6-9",
+      "text": "And let us not be weary in well-doing: for in due season we shall reap, if we faint not.",
+      "reference": "Galatians 6:9",
+      "theme": "perseverance",
+      "bookOrder": 48,
+      "dayIndex": 15
+    },
+    {
+      "id": "ps-144-1",
+      "text": "Blessed be Jehovah my rock, Who teacheth my hands to war, And my fingers to fight.",
+      "reference": "Psalm 144:1",
+      "theme": "warrior",
+      "bookOrder": 19,
+      "dayIndex": 16
+    },
+    {
+      "id": "eph-6-11",
+      "text": "Put on the whole armor of God, that ye may be able to stand against the wiles of the devil.",
+      "reference": "Ephesians 6:11",
+      "theme": "warrior",
+      "bookOrder": 49,
+      "dayIndex": 17
+    },
+    {
+      "id": "2tim-2-3",
+      "text": "Suffer hardship with me, as a good soldier of Christ Jesus.",
+      "reference": "2 Timothy 2:3",
+      "theme": "warrior",
+      "bookOrder": 55,
+      "dayIndex": 18
+    },
+    {
+      "id": "1pet-5-8",
+      "text": "Be sober, be watchful: your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour.",
+      "reference": "1 Peter 5:8",
+      "theme": "discipline",
+      "bookOrder": 60,
+      "dayIndex": 19
+    },
+    {
+      "id": "prov-24-10",
+      "text": "If thou faint in the day of adversity, Thy strength is small.",
+      "reference": "Proverbs 24:10",
+      "theme": "strength",
+      "bookOrder": 20,
+      "dayIndex": 20
+    },
+    {
+      "id": "2cor-12-9",
+      "text": "And he hath said unto me, My grace is sufficient for thee: for my power is made perfect in weakness. Most gladly therefore will I rather glory in my weaknesses, that the power of Christ may rest upon me.",
+      "reference": "2 Corinthians 12:9",
+      "theme": "strength",
+      "bookOrder": 47,
+      "dayIndex": 21
+    },
+    {
+      "id": "ps-46-1",
+      "text": "God is our refuge and strength, A very present help in trouble.",
+      "reference": "Psalm 46:1",
+      "theme": "strength",
+      "bookOrder": 19,
+      "dayIndex": 22
+    },
+    {
+      "id": "neh-8-10",
+      "text": "The joy of Jehovah is your strength.",
+      "reference": "Nehemiah 8:10",
+      "theme": "strength",
+      "bookOrder": 16,
+      "dayIndex": 23
+    },
+    {
+      "id": "isa-41-10",
+      "text": "Fear thou not, for I am with thee; be not dismayed, for I am thy God; I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.",
+      "reference": "Isaiah 41:10",
+      "theme": "courage",
+      "bookOrder": 23,
+      "dayIndex": 24
+    },
+    {
+      "id": "ps-73-26",
+      "text": "My flesh and my heart faileth; But God is the strength of my heart and my portion for ever.",
+      "reference": "Psalm 73:26",
+      "theme": "strength",
+      "bookOrder": 19,
+      "dayIndex": 25
+    },
+    {
+      "id": "hab-3-19",
+      "text": "Jehovah, the Lord, is my strength; And he maketh my feet like hinds' feet, And will make me to walk upon my high places.",
+      "reference": "Habakkuk 3:19",
+      "theme": "strength",
+      "bookOrder": 35,
+      "dayIndex": 26
+    },
+    {
+      "id": "1cor-16-13",
+      "text": "Watch ye, stand fast in the faith, quit you like men, be strong.",
+      "reference": "1 Corinthians 16:13",
+      "theme": "courage",
+      "bookOrder": 46,
+      "dayIndex": 27
+    },
+    {
+      "id": "ps-31-24",
+      "text": "Be strong, and let your heart take courage, All ye that hope in Jehovah.",
+      "reference": "Psalm 31:24",
+      "theme": "courage",
+      "bookOrder": 19,
+      "dayIndex": 28
+    },
+    {
+      "id": "col-3-23",
+      "text": "Whatsoever ye do, work heartily, as unto the Lord, and not unto men.",
+      "reference": "Colossians 3:23",
+      "theme": "discipline",
+      "bookOrder": 51,
+      "dayIndex": 29
+    }
+  ]
+}

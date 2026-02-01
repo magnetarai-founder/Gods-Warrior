@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "sessions": [
+    {
+      "id": "box-breathing",
+      "name": "Box Breathing",
+      "description": "4-4-4-4 tactical breathing for calm and focus. Used by Navy SEALs.",
+      "phases": [
+        { "type": "inhale", "duration": 4 },
+        { "type": "holdIn", "duration": 4 },
+        { "type": "exhale", "duration": 4 },
+        { "type": "holdOut", "duration": 4 }
+      ],
+      "rounds": 5,
+      "isDefault": true
+    },
+    {
+      "id": "warrior-breath",
+      "name": "Warrior Breath",
+      "description": "5-5-5 breathing pattern for strength and mental clarity before battle.",
+      "phases": [
+        { "type": "inhale", "duration": 5 },
+        { "type": "holdIn", "duration": 5 },
+        { "type": "exhale", "duration": 5 }
+      ],
+      "rounds": 7,
+      "isDefault": false
+    },
+    {
+      "id": "before-battle",
+      "name": "Before Battle",
+      "description": "4-7-8 calming pattern. The extended exhale activates the parasympathetic nervous system.",
+      "phases": [
+        { "type": "inhale", "duration": 4 },
+        { "type": "holdIn", "duration": 7 },
+        { "type": "exhale", "duration": 8 }
+      ],
+      "rounds": 4,
+      "isDefault": false
+    },
+    {
+      "id": "morning-dedication",
+      "name": "Morning Dedication",
+      "description": "Simple breath pattern for morning prayer and dedication. No holds, just presence.",
+      "phases": [
+        { "type": "inhale", "duration": 4 },
+        { "type": "exhale", "duration": 4 }
+      ],
+      "rounds": 10,
+      "isDefault": false
+    },
+    {
+      "id": "deep-prayer",
+      "name": "Deep Prayer",
+      "description": "Extended breath pattern for deep contemplation and extended prayer sessions.",
+      "phases": [
+        { "type": "inhale", "duration": 5 },
+        { "type": "holdIn", "duration": 5 },
+        { "type": "exhale", "duration": 5 },
+        { "type": "holdOut", "duration": 5 }
+      ],
+      "rounds": 8,
+      "isDefault": false
+    },
+    {
+      "id": "recovery-breath",
+      "name": "Recovery Breath",
+      "description": "Post-workout recovery breathing to restore calm and aid recovery.",
+      "phases": [
+        { "type": "inhale", "duration": 4 },
+        { "type": "holdIn", "duration": 2 },
+        { "type": "exhale", "duration": 6 }
+      ],
+      "rounds": 6,
+      "isDefault": false
+    }
+  ]
+}

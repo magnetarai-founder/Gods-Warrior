@@ -1,0 +1,285 @@
+{
+  "version": "1.0",
+  "exercises": [
+    {
+      "id": "pushup-standard",
+      "name": "Push-up",
+      "description": "Classic upper body pushing exercise",
+      "instructions": "Start in plank position, hands shoulder-width apart. Lower chest to ground keeping body straight. Push back up to start.",
+      "category": "upperBody",
+      "muscleGroups": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "pushup-wide",
+      "name": "Wide Push-up",
+      "description": "Push-up with hands wider than shoulders",
+      "instructions": "Place hands wider than shoulder-width. Lower chest to ground. Push back up. Emphasizes chest.",
+      "category": "upperBody",
+      "muscleGroups": ["chest", "shoulders"]
+    },
+    {
+      "id": "pushup-diamond",
+      "name": "Diamond Push-up",
+      "description": "Push-up with hands together forming a diamond",
+      "instructions": "Place hands together under chest, thumbs and index fingers touching. Lower chest to hands. Push back up.",
+      "category": "upperBody",
+      "muscleGroups": ["triceps", "chest"]
+    },
+    {
+      "id": "burpee",
+      "name": "Burpee",
+      "description": "Full body explosive conditioning movement",
+      "instructions": "From standing, squat down and place hands on floor. Jump feet back to plank. Do a push-up. Jump feet forward. Explode up into a jump.",
+      "category": "fullBody",
+      "muscleGroups": ["full body"]
+    },
+    {
+      "id": "squat-air",
+      "name": "Air Squat",
+      "description": "Bodyweight squat",
+      "instructions": "Stand with feet shoulder-width apart. Lower until thighs are parallel to ground. Keep weight in heels. Stand back up.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes"]
+    },
+    {
+      "id": "squat-jump",
+      "name": "Jump Squat",
+      "description": "Explosive squat with jump",
+      "instructions": "Perform an air squat. At the bottom, explode up into a jump. Land softly and immediately descend into next squat.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes", "calves"]
+    },
+    {
+      "id": "lunge-forward",
+      "name": "Forward Lunge",
+      "description": "Alternating forward lunges",
+      "instructions": "Step forward with one leg, lowering until both knees are at 90 degrees. Push back to standing. Alternate legs.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "lunge-reverse",
+      "name": "Reverse Lunge",
+      "description": "Alternating backward lunges",
+      "instructions": "Step backward with one leg, lowering until both knees are at 90 degrees. Push back to standing. Alternate legs.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "lunge-jump",
+      "name": "Jump Lunge",
+      "description": "Explosive alternating lunges",
+      "instructions": "From lunge position, explode up and switch legs mid-air. Land softly in opposite lunge position.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes", "calves"]
+    },
+    {
+      "id": "plank-standard",
+      "name": "Plank",
+      "description": "Core stabilization hold",
+      "instructions": "Hold push-up position with body in straight line from head to heels. Engage core. Keep hips level.",
+      "category": "core",
+      "muscleGroups": ["core", "shoulders"]
+    },
+    {
+      "id": "plank-side",
+      "name": "Side Plank",
+      "description": "Lateral core stabilization",
+      "instructions": "Lie on side, prop up on forearm. Lift hips so body forms straight line. Hold. Switch sides.",
+      "category": "core",
+      "muscleGroups": ["obliques", "core"]
+    },
+    {
+      "id": "mountain-climber",
+      "name": "Mountain Climber",
+      "description": "Dynamic core and cardio exercise",
+      "instructions": "Start in plank position. Drive one knee toward chest, then quickly switch legs. Keep hips low and move fast.",
+      "category": "cardio",
+      "muscleGroups": ["core", "hip flexors", "shoulders"]
+    },
+    {
+      "id": "jumping-jack",
+      "name": "Jumping Jack",
+      "description": "Classic cardio warmup exercise",
+      "instructions": "Jump feet out while raising arms overhead. Jump feet together while lowering arms. Repeat rapidly.",
+      "category": "cardio",
+      "muscleGroups": ["full body"]
+    },
+    {
+      "id": "high-knees",
+      "name": "High Knees",
+      "description": "Running in place with high knee drive",
+      "instructions": "Run in place, driving knees up to hip height. Pump arms. Stay on balls of feet.",
+      "category": "cardio",
+      "muscleGroups": ["hip flexors", "calves", "core"]
+    },
+    {
+      "id": "butt-kick",
+      "name": "Butt Kicks",
+      "description": "Running in place kicking heels to glutes",
+      "instructions": "Run in place, kicking heels up toward glutes. Pump arms. Stay on balls of feet.",
+      "category": "cardio",
+      "muscleGroups": ["hamstrings", "calves"]
+    },
+    {
+      "id": "crunch",
+      "name": "Crunch",
+      "description": "Basic abdominal exercise",
+      "instructions": "Lie on back, knees bent, hands behind head. Curl shoulders off ground toward knees. Lower with control.",
+      "category": "core",
+      "muscleGroups": ["abs"]
+    },
+    {
+      "id": "situp",
+      "name": "Sit-up",
+      "description": "Full range abdominal exercise",
+      "instructions": "Lie on back, knees bent, hands behind head or crossed on chest. Sit all the way up. Lower with control.",
+      "category": "core",
+      "muscleGroups": ["abs", "hip flexors"]
+    },
+    {
+      "id": "vup",
+      "name": "V-Up",
+      "description": "Advanced core exercise",
+      "instructions": "Lie flat on back, arms overhead. Simultaneously lift legs and torso, reaching hands toward toes. Lower with control.",
+      "category": "core",
+      "muscleGroups": ["abs", "hip flexors"]
+    },
+    {
+      "id": "leg-raise",
+      "name": "Leg Raise",
+      "description": "Lower abdominal exercise",
+      "instructions": "Lie on back, hands under hips. Keeping legs straight, raise them to 90 degrees. Lower slowly without touching ground.",
+      "category": "core",
+      "muscleGroups": ["lower abs", "hip flexors"]
+    },
+    {
+      "id": "flutter-kick",
+      "name": "Flutter Kick",
+      "description": "Alternating leg raises",
+      "instructions": "Lie on back, hands under hips. Lift legs slightly off ground. Alternate kicking legs up and down in small range.",
+      "category": "core",
+      "muscleGroups": ["lower abs", "hip flexors"]
+    },
+    {
+      "id": "bicycle-crunch",
+      "name": "Bicycle Crunch",
+      "description": "Rotational core exercise",
+      "instructions": "Lie on back, hands behind head. Bring opposite elbow to knee while extending other leg. Alternate sides in cycling motion.",
+      "category": "core",
+      "muscleGroups": ["abs", "obliques"]
+    },
+    {
+      "id": "dip-tricep",
+      "name": "Tricep Dip",
+      "description": "Upper body pushing exercise using chair or bench",
+      "instructions": "Hands on edge of chair behind you. Lower body by bending elbows to 90 degrees. Push back up.",
+      "category": "upperBody",
+      "muscleGroups": ["triceps", "shoulders"]
+    },
+    {
+      "id": "pike-pushup",
+      "name": "Pike Push-up",
+      "description": "Shoulder-focused push-up variation",
+      "instructions": "Start in downward dog position. Bend elbows and lower head toward ground. Push back up.",
+      "category": "upperBody",
+      "muscleGroups": ["shoulders", "triceps"]
+    },
+    {
+      "id": "wall-sit",
+      "name": "Wall Sit",
+      "description": "Isometric leg exercise",
+      "instructions": "Lean against wall, slide down until thighs are parallel to ground. Hold position. Keep back flat against wall.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes"]
+    },
+    {
+      "id": "glute-bridge",
+      "name": "Glute Bridge",
+      "description": "Hip extension exercise",
+      "instructions": "Lie on back, knees bent, feet flat. Drive through heels to lift hips until body forms straight line. Squeeze glutes at top.",
+      "category": "lowerBody",
+      "muscleGroups": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "calf-raise",
+      "name": "Calf Raise",
+      "description": "Lower leg exercise",
+      "instructions": "Stand on edge of step or flat ground. Rise up onto toes. Lower heels below step level. Repeat.",
+      "category": "lowerBody",
+      "muscleGroups": ["calves"]
+    },
+    {
+      "id": "superman",
+      "name": "Superman",
+      "description": "Back extension exercise",
+      "instructions": "Lie face down, arms extended overhead. Simultaneously lift arms, chest, and legs off ground. Hold briefly. Lower.",
+      "category": "core",
+      "muscleGroups": ["lower back", "glutes"]
+    },
+    {
+      "id": "box-jump",
+      "name": "Box Jump",
+      "description": "Explosive lower body exercise using sturdy surface",
+      "instructions": "Stand facing box or sturdy platform. Swing arms and jump onto box, landing softly. Step down and repeat.",
+      "category": "lowerBody",
+      "muscleGroups": ["quads", "glutes", "calves"]
+    },
+    {
+      "id": "tuck-jump",
+      "name": "Tuck Jump",
+      "description": "Explosive jumping exercise",
+      "instructions": "Jump straight up, pulling knees to chest at peak. Land softly and immediately jump again.",
+      "category": "cardio",
+      "muscleGroups": ["quads", "core", "calves"]
+    },
+    {
+      "id": "inchworm",
+      "name": "Inchworm",
+      "description": "Full body mobility and strength exercise",
+      "instructions": "From standing, bend forward and walk hands out to plank. Do a push-up (optional). Walk hands back to feet. Stand.",
+      "category": "fullBody",
+      "muscleGroups": ["hamstrings", "core", "shoulders"]
+    },
+    {
+      "id": "bear-crawl",
+      "name": "Bear Crawl",
+      "description": "Quadruped locomotion exercise",
+      "instructions": "Start on hands and knees, lift knees slightly off ground. Crawl forward moving opposite hand and foot together.",
+      "category": "fullBody",
+      "muscleGroups": ["shoulders", "core", "quads"]
+    },
+    {
+      "id": "skater",
+      "name": "Skater",
+      "description": "Lateral jumping exercise",
+      "instructions": "Jump laterally to one side, landing on outside foot. Swing other leg behind. Jump to other side. Repeat.",
+      "category": "cardio",
+      "muscleGroups": ["glutes", "quads", "calves"]
+    },
+    {
+      "id": "russian-twist",
+      "name": "Russian Twist",
+      "description": "Rotational core exercise",
+      "instructions": "Sit with knees bent, feet off ground. Lean back slightly. Rotate torso side to side, touching ground beside hips.",
+      "category": "core",
+      "muscleGroups": ["obliques", "abs"]
+    },
+    {
+      "id": "dead-bug",
+      "name": "Dead Bug",
+      "description": "Core stability exercise",
+      "instructions": "Lie on back, arms extended up, knees at 90 degrees. Lower opposite arm and leg toward ground. Return. Alternate.",
+      "category": "core",
+      "muscleGroups": ["core", "hip flexors"]
+    },
+    {
+      "id": "hollow-hold",
+      "name": "Hollow Hold",
+      "description": "Core isometric hold",
+      "instructions": "Lie on back, arms overhead. Lift shoulders and legs off ground, pressing lower back into floor. Hold.",
+      "category": "core",
+      "muscleGroups": ["abs", "hip flexors"]
+    }
+  ]
+}

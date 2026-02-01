@@ -1,0 +1,161 @@
+{
+  "version": "1.0",
+  "wods": [
+    {
+      "id": "warrior-warmup",
+      "name": "Warrior Warmup",
+      "description": "Light full-body activation to start the day",
+      "type": "rounds",
+      "rounds": 2,
+      "exercises": [
+        { "exerciseId": "jumping-jack", "reps": 25 },
+        { "exerciseId": "pushup-standard", "reps": 10 },
+        { "exerciseId": "squat-air", "reps": 15 },
+        { "exerciseId": "plank-standard", "duration": 30 }
+      ]
+    },
+    {
+      "id": "armor-bearer",
+      "name": "Armor Bearer",
+      "description": "Full armor of God - full body strength circuit",
+      "type": "rounds",
+      "rounds": 3,
+      "exercises": [
+        { "exerciseId": "burpee", "reps": 10 },
+        { "exerciseId": "pushup-standard", "reps": 15 },
+        { "exerciseId": "squat-air", "reps": 20 },
+        { "exerciseId": "mountain-climber", "reps": 30 },
+        { "exerciseId": "plank-standard", "duration": 45 }
+      ]
+    },
+    {
+      "id": "davids-sling",
+      "name": "David's Sling",
+      "description": "Quick and explosive - 5 rounds for time",
+      "type": "timeLimited",
+      "timeCap": 600,
+      "exercises": [
+        { "exerciseId": "burpee", "reps": 5 },
+        { "exerciseId": "squat-jump", "reps": 10 },
+        { "exerciseId": "pushup-standard", "reps": 15 }
+      ]
+    },
+    {
+      "id": "gideons-300",
+      "name": "Gideon's 300",
+      "description": "300 reps total - for warriors who trust in quality over quantity",
+      "type": "rounds",
+      "rounds": 3,
+      "exercises": [
+        { "exerciseId": "squat-air", "reps": 25 },
+        { "exerciseId": "pushup-standard", "reps": 25 },
+        { "exerciseId": "lunge-forward", "reps": 25 },
+        { "exerciseId": "situp", "reps": 25 }
+      ]
+    },
+    {
+      "id": "elijahs-fire",
+      "name": "Elijah's Fire",
+      "description": "High intensity Tabata - 20s work, 10s rest",
+      "type": "tabata",
+      "exercises": [
+        { "exerciseId": "burpee", "duration": 20 },
+        { "exerciseId": "mountain-climber", "duration": 20 },
+        { "exerciseId": "squat-jump", "duration": 20 },
+        { "exerciseId": "high-knees", "duration": 20 }
+      ]
+    },
+    {
+      "id": "pauls-endurance",
+      "name": "Paul's Endurance",
+      "description": "20-minute AMRAP - run with perseverance",
+      "type": "amrap",
+      "timeCap": 1200,
+      "exercises": [
+        { "exerciseId": "pushup-standard", "reps": 10 },
+        { "exerciseId": "squat-air", "reps": 15 },
+        { "exerciseId": "situp", "reps": 20 },
+        { "exerciseId": "jumping-jack", "reps": 25 }
+      ]
+    },
+    {
+      "id": "joshua-conquest",
+      "name": "Joshua's Conquest",
+      "description": "7 rounds - like the walls of Jericho",
+      "type": "rounds",
+      "rounds": 7,
+      "exercises": [
+        { "exerciseId": "burpee", "reps": 7 },
+        { "exerciseId": "pushup-standard", "reps": 7 },
+        { "exerciseId": "squat-air", "reps": 7 }
+      ]
+    },
+    {
+      "id": "samsons-strength",
+      "name": "Samson's Strength",
+      "description": "Upper body focused - push power",
+      "type": "rounds",
+      "rounds": 4,
+      "exercises": [
+        { "exerciseId": "pushup-standard", "reps": 15 },
+        { "exerciseId": "pushup-wide", "reps": 15 },
+        { "exerciseId": "pushup-diamond", "reps": 10 },
+        { "exerciseId": "pike-pushup", "reps": 10 },
+        { "exerciseId": "dip-tricep", "reps": 15 }
+      ]
+    },
+    {
+      "id": "jacobs-ladder",
+      "name": "Jacob's Ladder",
+      "description": "Ascending rep ladder - each round adds reps",
+      "type": "timeLimited",
+      "timeCap": 900,
+      "exercises": [
+        { "exerciseId": "squat-air", "reps": 10 },
+        { "exerciseId": "pushup-standard", "reps": 10 },
+        { "exerciseId": "situp", "reps": 10 }
+      ]
+    },
+    {
+      "id": "daniels-resolve",
+      "name": "Daniel's Resolve",
+      "description": "Core focused - strength in the furnace",
+      "type": "rounds",
+      "rounds": 3,
+      "exercises": [
+        { "exerciseId": "plank-standard", "duration": 60 },
+        { "exerciseId": "situp", "reps": 20 },
+        { "exerciseId": "bicycle-crunch", "reps": 30 },
+        { "exerciseId": "russian-twist", "reps": 20 },
+        { "exerciseId": "leg-raise", "reps": 15 },
+        { "exerciseId": "hollow-hold", "duration": 30 }
+      ]
+    },
+    {
+      "id": "peters-faith",
+      "name": "Peter's Faith",
+      "description": "Step out of the boat - explosive movements",
+      "type": "amrap",
+      "timeCap": 720,
+      "exercises": [
+        { "exerciseId": "squat-jump", "reps": 10 },
+        { "exerciseId": "lunge-jump", "reps": 10 },
+        { "exerciseId": "tuck-jump", "reps": 5 },
+        { "exerciseId": "burpee", "reps": 5 }
+      ]
+    },
+    {
+      "id": "nehemiahs-wall",
+      "name": "Nehemiah's Wall",
+      "description": "Build endurance brick by brick",
+      "type": "rounds",
+      "rounds": 5,
+      "exercises": [
+        { "exerciseId": "wall-sit", "duration": 45 },
+        { "exerciseId": "pushup-standard", "reps": 12 },
+        { "exerciseId": "squat-air", "reps": 15 },
+        { "exerciseId": "glute-bridge", "reps": 15 }
+      ]
+    }
+  ]
+}
