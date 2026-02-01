@@ -133,8 +133,8 @@ struct SettingsTab: View {
         UserDefaults.standard.removeObject(forKey: "godswarrior.appStartDate")
 
         // Update settings
-        if var settings = settings.first {
-            settings.appStartDate = Date()
+        if let existingSettings = settings.first {
+            existingSettings.appStartDate = Date()
             try? modelContext.save()
         }
     }

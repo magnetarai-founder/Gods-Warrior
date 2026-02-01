@@ -177,79 +177,91 @@ struct ExercisePickerView: View {
 
     var filteredExercises: [Exercise] {
         var result = exercises
-
         if let category = selectedCategory {
             result = result.filter { $0.category == category }
         }
-
         if !searchText.isEmpty {
             result = result.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         }
-
         return result
     }
 
     var body: some View {
         NavigationStack {
-            List {
-                // Category filter
-                Section {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            CategoryChip(title: "All", isSelected: selectedCategory == nil) {
-                                selectedCategory = nil
-                            }
-
-                            ForEach(ExerciseCategory.allCases, id: \.self) { category in
-                                CategoryChip(
-                                    title: category.displayName,
-                                    isSelected: selectedCategory == category
-                                ) {
-                                    selectedCategory = category
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
+            exerciseList
+                .searchable(text: $searchText, prompt: "Search exercises")
+                .navigationTitle("Add Exercise")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") { dismiss() }
                     }
                 }
-                .listRowInsets(EdgeInsets())
-                .listRowBackground(Color.clear)
+        }
+    }
 
-                // Exercise list
-                ForEach(filteredExercises) { exercise in
-                    Button {
-                        onSelect(exercise)
-                        dismiss()
-                    } label: {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(exercise.name)
-                                    .font(.body.weight(.medium))
-                                    .foregroundStyle(.primary)
+    private var exerciseList: some View {
+        List {
+            categoryFilterSection
+            exerciseListSection
+        }
+    }
 
-                                Text(exercise.category.displayName)
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
+    private var categoryFilterSection: some View {
+        Section {
+            categoryScrollView
+        }
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color.clear)
+    }
 
-                            Spacer()
-
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundStyle(.accentColor)
-                        }
+    private var categoryScrollView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                CategoryChip(title: "All", isSelected: selectedCategory == nil) {
+                    selectedCategory = nil
+                }
+                ForEach(ExerciseCategory.allCases, id: \.self) { category in
+                    CategoryChip(
+                        title: category.displayName,
+                        isSelected: selectedCategory == category
+                    ) {
+                        selectedCategory = category
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "Search exercises")
-            .navigationTitle("Add Exercise")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
+            .padding(.horizontal)
+        }
+    }
+
+    private var exerciseListSection: some View {
+        ForEach(filteredExercises) { exercise in
+            exerciseButton(for: exercise)
+        }
+    }
+
+    private func exerciseButton(for exercise: Exercise) -> some View {
+        Button {
+            onSelect(exercise)
+            dismiss()
+        } label: {
+            exerciseRow(for: exercise)
+        }
+    }
+
+    private func exerciseRow(for exercise: Exercise) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(exercise.name)
+                    .font(.body.weight(.medium))
+                    .foregroundStyle(.primary)
+                Text(exercise.category.displayName)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
+            Spacer()
+            Image(systemName: "plus.circle.fill")
+                .foregroundStyle(Color.accentColor)
         }
     }
 }
