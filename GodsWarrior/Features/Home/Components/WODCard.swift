@@ -3,6 +3,7 @@ import SwiftUI
 struct WODCard: View {
     let wod: WODData?
     let isCompleted: Bool
+    var onStart: (() -> Void)? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -70,13 +71,17 @@ struct WODCard: View {
                 if !isCompleted {
                     HStack {
                         Spacer()
-                        Label("Start", systemImage: "play.fill")
-                            .font(.subheadline.weight(.medium))
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .background(.blue)
-                            .foregroundStyle(.white)
-                            .clipShape(Capsule())
+                        Button {
+                            onStart?()
+                        } label: {
+                            Label("Start", systemImage: "play.fill")
+                                .font(.subheadline.weight(.medium))
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                                .background(.blue)
+                                .foregroundStyle(.white)
+                                .clipShape(Capsule())
+                        }
                     }
                 }
             } else {

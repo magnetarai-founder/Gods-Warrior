@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct WorkoutExecutionView: View {
-    let wod: WOD
+    let wod: WODData
 
+    @Environment(ContentStore.self) private var contentStore
     @Environment(DailyLogService.self) private var dailyLogService
     @Environment(\.dismiss) private var dismiss
 
@@ -14,13 +15,17 @@ struct WorkoutExecutionView: View {
     @State private var roundsCompleted: Int = 0
     @State private var timerTask: Task<Void, Never>?
 
-    private var exercises: [WODExercise] {
-        wod.sortedExercises
+    private var exercises: [WODExerciseData] {
+        wod.exercises
     }
 
-    private var currentExercise: WODExercise? {
+    private var currentExercise: WODExerciseData? {
         guard currentExerciseIndex < exercises.count else { return nil }
         return exercises[currentExerciseIndex]
+    }
+
+    private func exerciseName(for exerciseId: String) -> String {
+        contentStore.exercise(byId: exerciseId)?.name ?? exerciseId.replacingOccurrences(of: "-", with: " ").capitalized
     }
 
     var body: some View {
@@ -135,7 +140,7 @@ struct WorkoutExecutionView: View {
             // Current exercise
             if let exercise = currentExercise {
                 VStack(spacing: 8) {
-                    Text(exercise.exercise?.name ?? "Exercise")
+                    Text(exerciseName(for: exercise.exerciseId))
                         .font(.largeTitle.bold())
                         .foregroundStyle(.white)
 
@@ -147,14 +152,6 @@ struct WorkoutExecutionView: View {
                         Text("\(duration)s")
                             .font(.title2)
                             .foregroundStyle(.orange)
-                    }
-
-                    if let instructions = exercise.exercise?.instructions {
-                        Text(instructions)
-                            .font(.body)
-                            .foregroundStyle(.white.opacity(0.7))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
                     }
                 }
             }
@@ -251,7 +248,7 @@ struct WorkoutExecutionView: View {
 
     private var controlsView: some View {
         HStack(spacing: 48) {
-            // Previous / Pause
+            // Pause
             Button {
                 pauseWorkout()
             } label: {
@@ -326,19 +323,19 @@ struct WorkoutExecutionView: View {
         // Set up timer based on WOD type
         switch wod.wodType {
         case .amrap, .timeLimited:
-            timeRemaining = wod.config.timeCap ?? 12 * 60
+            timeRemaining = wod.timeCap ?? 12 * 60
         case .rounds, .tabata:
             timeRemaining = 0
         }
 
         phase = .active(exerciseState: ExerciseState(
             exerciseIndex: 0,
-            exerciseName: currentExercise?.exercise?.name ?? "",
-            instructions: currentExercise?.exercise?.instructions,
-            isTimeBased: currentExercise?.isTimeBased ?? false,
+            exerciseName: currentExercise.map { exerciseName(for: $0.exerciseId) } ?? "",
+            instructions: nil,
+            isTimeBased: currentExercise?.duration != nil,
             timeRemaining: currentExercise?.duration,
             currentRound: 1,
-            totalRounds: wod.config.rounds ?? 0,
+            totalRounds: wod.rounds ?? 0,
             repsCompleted: 0,
             targetReps: currentExercise?.reps,
             tabataPhase: nil
@@ -392,7 +389,7 @@ struct WorkoutExecutionView: View {
             currentExerciseIndex = 0
 
             if wod.wodType == .rounds {
-                if roundsCompleted >= (wod.config.rounds ?? 1) {
+                if roundsCompleted >= (wod.rounds ?? 1) {
                     completeWorkout()
                     return
                 }
@@ -403,12 +400,12 @@ struct WorkoutExecutionView: View {
 
         phase = .active(exerciseState: ExerciseState(
             exerciseIndex: currentExerciseIndex,
-            exerciseName: currentExercise?.exercise?.name ?? "",
-            instructions: currentExercise?.exercise?.instructions,
-            isTimeBased: currentExercise?.isTimeBased ?? false,
+            exerciseName: currentExercise.map { exerciseName(for: $0.exerciseId) } ?? "",
+            instructions: nil,
+            isTimeBased: currentExercise?.duration != nil,
             timeRemaining: currentExercise?.duration,
             currentRound: currentRound,
-            totalRounds: wod.config.rounds ?? 0,
+            totalRounds: wod.rounds ?? 0,
             repsCompleted: 0,
             targetReps: currentExercise?.reps,
             tabataPhase: nil
@@ -429,12 +426,12 @@ struct WorkoutExecutionView: View {
     private func resumeWorkout() {
         phase = .active(exerciseState: ExerciseState(
             exerciseIndex: currentExerciseIndex,
-            exerciseName: currentExercise?.exercise?.name ?? "",
-            instructions: currentExercise?.exercise?.instructions,
-            isTimeBased: currentExercise?.isTimeBased ?? false,
+            exerciseName: currentExercise.map { exerciseName(for: $0.exerciseId) } ?? "",
+            instructions: nil,
+            isTimeBased: currentExercise?.duration != nil,
             timeRemaining: currentExercise?.duration,
             currentRound: currentRound,
-            totalRounds: wod.config.rounds ?? 0,
+            totalRounds: wod.rounds ?? 0,
             repsCompleted: 0,
             targetReps: currentExercise?.reps,
             tabataPhase: nil
@@ -499,5 +496,17 @@ enum TabataPhase: String, Equatable {
 }
 
 #Preview {
-    WorkoutExecutionView(wod: WOD(name: "Test WOD", wodType: .amrap))
+    WorkoutExecutionView(wod: WODData(
+        id: "preview",
+        name: "Test AMRAP",
+        description: nil,
+        type: "amrap",
+        timeCap: 720,
+        rounds: nil,
+        exercises: [
+            WODExerciseData(exerciseId: "pushup-standard", reps: 10, duration: nil),
+            WODExerciseData(exerciseId: "squat-air", reps: 15, duration: nil)
+        ]
+    ))
+    .environment(ContentStore())
 }

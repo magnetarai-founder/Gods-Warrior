@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BreathSessionView: View {
-    let session: BreathSession
+    let session: BreathSessionData
 
     @Environment(DailyLogService.self) private var dailyLogService
     @Environment(\.dismiss) private var dismiss
@@ -321,5 +321,17 @@ struct ProgressRing: View {
 }
 
 #Preview {
-    BreathSessionView(session: BreathSession.boxBreathing())
+    BreathSessionView(session: BreathSessionData(
+        id: "preview",
+        name: "Box Breathing",
+        description: "4-4-4-4 pattern",
+        phases: [
+            BreathPhaseData(type: "inhale", duration: 4),
+            BreathPhaseData(type: "holdIn", duration: 4),
+            BreathPhaseData(type: "exhale", duration: 4),
+            BreathPhaseData(type: "holdOut", duration: 4)
+        ],
+        rounds: 5,
+        isDefault: true
+    ))
 }

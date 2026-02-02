@@ -34,8 +34,15 @@ final class NavigationStore {
     var showBreathSession: Bool = false
     var showWODDetail: Bool = false
     var showWODBuilder: Bool = false
+    var showWorkoutExecution: Bool = false
+
+    // SwiftData models (for user-created content)
     var selectedWOD: WOD?
     var selectedBreathSession: BreathSession?
+
+    // DTO types (for curated content from JSON)
+    var selectedWODData: WODData?
+    var selectedBreathSessionData: BreathSessionData?
 
     // MARK: - Init
 
@@ -73,12 +80,30 @@ final class NavigationStore {
 
     func openWODDetail(_ wod: WOD) {
         selectedWOD = wod
+        selectedWODData = nil
+        showWODDetail = true
+    }
+
+    func openWODDetail(_ wodData: WODData) {
+        selectedWODData = wodData
+        selectedWOD = nil
         showWODDetail = true
     }
 
     func openBreathSession(_ session: BreathSession) {
         selectedBreathSession = session
+        selectedBreathSessionData = nil
         showBreathSession = true
+    }
+
+    func openBreathSession(_ sessionData: BreathSessionData) {
+        selectedBreathSessionData = sessionData
+        selectedBreathSession = nil
+        showBreathSession = true
+    }
+
+    func startWorkout() {
+        showWorkoutExecution = true
     }
 
     // MARK: - Persistence

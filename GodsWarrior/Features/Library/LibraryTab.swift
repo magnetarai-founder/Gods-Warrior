@@ -69,6 +69,10 @@ struct WODLibraryView: View {
             if let todaysWOD = contentStore.todaysWOD {
                 Section("Today's Workout") {
                     WODDataListItem(wod: todaysWOD, isPinned: true)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            navigationStore.openWODDetail(todaysWOD)
+                        }
                 }
             }
 
@@ -76,6 +80,10 @@ struct WODLibraryView: View {
             Section("Curated Workouts") {
                 ForEach(curatedWODs) { wod in
                     WODDataListItem(wod: wod)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            navigationStore.openWODDetail(wod)
+                        }
                 }
             }
 
@@ -84,6 +92,7 @@ struct WODLibraryView: View {
                 Section("My Workouts") {
                     ForEach(userWODs) { wod in
                         WODListItem(wod: wod)
+                            .contentShape(Rectangle())
                             .onTapGesture {
                                 navigationStore.openWODDetail(wod)
                             }
@@ -192,11 +201,16 @@ struct WODDataListItem: View {
 
 struct BreathLibraryView: View {
     let sessions: [BreathSessionData]
+    @Environment(NavigationStore.self) private var navigationStore
 
     var body: some View {
         List {
             ForEach(sessions) { session in
                 BreathDataListItem(session: session)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        navigationStore.openBreathSession(session)
+                    }
             }
         }
     }

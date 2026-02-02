@@ -29,6 +29,24 @@ struct HomeTab: View {
         return contentStore.todaysWOD
     }
 
+    // MARK: - Navigation Helpers
+
+    private func openBreathSession() {
+        if let session = dailyLogService.todayLog?.breathSession {
+            navigationStore.openBreathSession(session)
+        } else if let sessionData = contentStore.defaultBreathSession {
+            navigationStore.openBreathSession(sessionData)
+        }
+    }
+
+    private func openWODDetail() {
+        if let wod = dailyLogService.todayLog?.wod {
+            navigationStore.openWODDetail(wod)
+        } else if let wodData = contentStore.todaysWOD {
+            navigationStore.openWODDetail(wodData)
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -45,23 +63,25 @@ struct HomeTab: View {
                     // Breath Card
                     BreathCard(
                         session: breathSessionForCard,
-                        isCompleted: dailyLogService.todayLog?.breathCompleted ?? false
+                        isCompleted: dailyLogService.todayLog?.breathCompleted ?? false,
+                        onStart: {
+                            openBreathSession()
+                        }
                     )
                     .onTapGesture {
-                        if let session = dailyLogService.todayLog?.breathSession {
-                            navigationStore.openBreathSession(session)
-                        }
+                        openBreathSession()
                     }
 
                     // WOD Card
                     WODCard(
                         wod: wodForCard,
-                        isCompleted: dailyLogService.todayLog?.wodCompleted ?? false
+                        isCompleted: dailyLogService.todayLog?.wodCompleted ?? false,
+                        onStart: {
+                            openWODDetail()
+                        }
                     )
                     .onTapGesture {
-                        if let wod = dailyLogService.todayLog?.wod {
-                            navigationStore.openWODDetail(wod)
-                        }
+                        openWODDetail()
                     }
                 }
                 .padding()
@@ -78,7 +98,9 @@ struct HomeTab: View {
                 set: { navigationStore.showBreathSession = $0 }
             )) {
                 if let session = navigationStore.selectedBreathSession {
-                    BreathSessionView(session: session)
+                    BreathSessionView(session: BreathSessionData(from: session))
+                } else if let sessionData = navigationStore.selectedBreathSessionData {
+                    BreathSessionView(session: sessionData)
                 }
             }
             .sheet(isPresented: Binding(
@@ -86,7 +108,9 @@ struct HomeTab: View {
                 set: { navigationStore.showWODDetail = $0 }
             )) {
                 if let wod = navigationStore.selectedWOD {
-                    WODDetailView(wod: wod)
+                    WODDetailView(wod: WODData(from: wod))
+                } else if let wodData = navigationStore.selectedWODData {
+                    WODDetailView(wod: wodData)
                 }
             }
         }

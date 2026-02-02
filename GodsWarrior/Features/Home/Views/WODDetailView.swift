@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct WODDetailView: View {
-    let wod: WOD
+    let wod: WODData
 
+    @Environment(ContentStore.self) private var contentStore
     @Environment(DailyLogService.self) private var dailyLogService
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
 
     @State private var showWorkoutExecution: Bool = false
@@ -45,8 +45,12 @@ struct WODDetailView: View {
                         Text("Exercises")
                             .font(.headline)
 
-                        ForEach(Array(wod.sortedExercises.enumerated()), id: \.element.id) { index, wodExercise in
-                            ExerciseRow(index: index + 1, wodExercise: wodExercise)
+                        ForEach(Array(wod.exercises.enumerated()), id: \.element.id) { index, wodExercise in
+                            ExerciseDataRow(
+                                index: index + 1,
+                                wodExercise: wodExercise,
+                                exerciseName: exerciseName(for: wodExercise.exerciseId)
+                            )
                         }
                     }
 
@@ -62,20 +66,6 @@ struct WODDetailView: View {
                                 .background(.blue)
                                 .foregroundStyle(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                        }
-
-                        if wod.isLibrary {
-                            Button {
-                                createCopy()
-                            } label: {
-                                Label("Customize", systemImage: "doc.on.doc")
-                                    .font(.subheadline)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color(.systemGray5))
-                                    .foregroundStyle(.primary)
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                            }
                         }
                     }
                     .padding(.top)
@@ -96,18 +86,17 @@ struct WODDetailView: View {
         }
     }
 
-    private func createCopy() {
-        _ = wod.createUserCopy(modelContext: modelContext)
-        try? modelContext.save()
-        // TODO: Navigate to edit the copy
+    private func exerciseName(for exerciseId: String) -> String {
+        contentStore.exercise(byId: exerciseId)?.name ?? exerciseId.replacingOccurrences(of: "-", with: " ").capitalized
     }
 }
 
-// MARK: - Exercise Row
+// MARK: - Exercise Data Row
 
-struct ExerciseRow: View {
+struct ExerciseDataRow: View {
     let index: Int
-    let wodExercise: WODExercise
+    let wodExercise: WODExerciseData
+    let exerciseName: String
 
     var body: some View {
         HStack(spacing: 12) {
@@ -117,15 +106,8 @@ struct ExerciseRow: View {
                 .frame(width: 24)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(wodExercise.exercise?.name ?? "Unknown Exercise")
+                Text(exerciseName)
                     .font(.body.weight(.medium))
-
-                if let instructions = wodExercise.exercise?.instructions {
-                    Text(instructions)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .lineLimit(2)
-                }
             }
 
             Spacer()
@@ -148,5 +130,17 @@ struct ExerciseRow: View {
 }
 
 #Preview {
-    WODDetailView(wod: WOD(name: "Test WOD", wodType: .amrap))
+    WODDetailView(wod: WODData(
+        id: "preview",
+        name: "Test WOD",
+        description: "A test workout",
+        type: "amrap",
+        timeCap: 600,
+        rounds: nil,
+        exercises: [
+            WODExerciseData(exerciseId: "pushup-standard", reps: 10, duration: nil),
+            WODExerciseData(exerciseId: "squat-air", reps: 15, duration: nil)
+        ]
+    ))
+    .environment(ContentStore())
 }
