@@ -26,11 +26,11 @@ struct LibraryTab: View {
                 switch nav.librarySegment {
                 case .wod:
                     WODLibraryView(
-                        curatedWODs: contentStore.curatedWODs,
+                        curatedWODs: contentStore.wodData,
                         userWODs: userWODs
                     )
                 case .breath:
-                    BreathLibraryView(sessions: contentStore.breathSessions)
+                    BreathLibraryView(sessions: contentStore.breathSessionData)
                 case .timer:
                     TimerLibraryView()
                 }
@@ -57,7 +57,7 @@ struct LibraryTab: View {
 // MARK: - WOD Library View
 
 struct WODLibraryView: View {
-    let curatedWODs: [WOD]
+    let curatedWODs: [WODData]
     let userWODs: [WOD]
 
     @Environment(NavigationStore.self) private var navigationStore
@@ -68,20 +68,14 @@ struct WODLibraryView: View {
             // Today's WOD pinned at top
             if let todaysWOD = contentStore.todaysWOD {
                 Section("Today's Workout") {
-                    WODListItem(wod: todaysWOD, isPinned: true)
-                        .onTapGesture {
-                            navigationStore.openWODDetail(todaysWOD)
-                        }
+                    WODDataListItem(wod: todaysWOD, isPinned: true)
                 }
             }
 
             // Curated WODs
             Section("Curated Workouts") {
                 ForEach(curatedWODs) { wod in
-                    WODListItem(wod: wod)
-                        .onTapGesture {
-                            navigationStore.openWODDetail(wod)
-                        }
+                    WODDataListItem(wod: wod)
                 }
             }
 
@@ -147,24 +141,108 @@ struct WODListItem: View {
     }
 }
 
+// MARK: - WOD Data List Item (for curated WODs)
+
+struct WODDataListItem: View {
+    let wod: WODData
+    var isPinned: Bool = false
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    if isPinned {
+                        Image(systemName: "pin.fill")
+                            .font(.caption)
+                            .foregroundStyle(.orange)
+                    }
+                    Text(wod.name)
+                        .font(.body.weight(.medium))
+                }
+
+                HStack(spacing: 8) {
+                    Text(wod.wodType.displayName)
+                        .font(.caption)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(Color.accentColor.opacity(0.2))
+                        .clipShape(Capsule())
+
+                    Text("\(wod.exerciseCount) exercises")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+
+                    Text(wod.estimatedDuration)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Spacer()
+
+            Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+        }
+        .padding(.vertical, 4)
+    }
+}
+
 // MARK: - Breath Library View
 
 struct BreathLibraryView: View {
-    let sessions: [BreathSession]
-    @Environment(NavigationStore.self) private var navigationStore
+    let sessions: [BreathSessionData]
 
     var body: some View {
         List {
             ForEach(sessions) { session in
-                BreathListItem(session: session)
-                    .onTapGesture {
-                        navigationStore.openBreathSession(session)
-                    }
+                BreathDataListItem(session: session)
             }
         }
     }
 }
 
+struct BreathDataListItem: View {
+    let session: BreathSessionData
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    Text(session.name)
+                        .font(.body.weight(.medium))
+
+                    if session.isDefault {
+                        Text("Default")
+                            .font(.caption2)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.green.opacity(0.2))
+                            .foregroundStyle(.green)
+                            .clipShape(Capsule())
+                    }
+                }
+
+                Text(session.patternString)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
+                Text("\(session.rounds) rounds • \(session.totalDuration / 60) min")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Image(systemName: "play.circle.fill")
+                .font(.title2)
+                .foregroundStyle(Color.accentColor)
+        }
+        .padding(.vertical, 4)
+    }
+}
+
+// Keep the original for SwiftData models (user WODs)
 struct BreathListItem: View {
     let session: BreathSession
 

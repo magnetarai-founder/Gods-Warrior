@@ -29,10 +29,8 @@ targets:
       - path: GodsWarrior
         excludes:
           - "**/*.json"
-    resources:
       - path: GodsWarrior/Resources/Data
-        buildPhase: resources
-      - path: GodsWarrior/Resources/Assets.xcassets
+        type: group
         buildPhase: resources
     settings:
       base:

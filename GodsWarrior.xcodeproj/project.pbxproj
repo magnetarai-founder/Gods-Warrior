@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		049865ED5412CB2D3C418231 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE72320B7C787962C87B76 /* HomeTab.swift */; };
+		0A0C042550005687DD172DBE /* breath_sessions.json in Resources */ = {isa = PBXBuildFile; fileRef = 9EE1F96E3E8163ABB7E226C4 /* breath_sessions.json */; };
 		0FACA2E772C8B3E039E91706 /* SettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD92313AFEEA76BC2D1E24FA /* SettingsTab.swift */; };
 		16AD5FEF6626231A49AE4614 /* WOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667A4B8E402CB2EDF9351E4C /* WOD.swift */; };
 		18517794A5F9D3538D09DA58 /* ExerciseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C2E44B852165DAEC4896C5 /* ExerciseCategory.swift */; };
@@ -18,6 +19,7 @@
 		1FA0F2C82C6B0B7600C91641 /* BreathPhaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFA972C3F84879BA14C316F /* BreathPhaseType.swift */; };
 		250DE07EBAEF598D80D97D29 /* WODDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EAED525440E9F98F876DA7 /* WODDetailView.swift */; };
 		256AD599D678E39CFCF93DC2 /* VerseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5617C47FA29ADB5DF0CC3 /* VerseCard.swift */; };
+		3D8B239620F48D47EC89EA63 /* curated_wods.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB17E130FDAE2D14C0A9635 /* curated_wods.json */; };
 		493EA3B38B030F2261210A1D /* WorkoutExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925A6F90EEB560A8DDE13A3B /* WorkoutExecutionView.swift */; };
 		51CF65BDA95DAFC67DA3FFB3 /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B56BC4E0CCBD5C0DF033D7A /* Verse.swift */; };
 		53790F494056EDE37B06943D /* LibraryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE35BA5F9D311A0D7C3DA06 /* LibraryTab.swift */; };
@@ -27,6 +29,7 @@
 		79537AD7E3ED564C243F7BF2 /* WODConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A797D336E08E65AF9674E3A6 /* WODConfig.swift */; };
 		7E85EE7A23D9EB0C461D4E1C /* CalendarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE03422E7A2AF03DC66AF78B /* CalendarTab.swift */; };
 		88104E579AE04DF6F4981F15 /* WODExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60CDE58CCB575EE4C46580A /* WODExercise.swift */; };
+		8CDAD66BD89A9231FA0B8E77 /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A72F58832350C41597294D /* exercises.json */; };
 		97B67BBBE189ED811390A08B /* GodsWarriorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C800C27BA433ABD98D18F /* GodsWarriorApp.swift */; };
 		97BEA25F26B4CDE5B1D93B6C /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A19D6D51642B4478EDFE55 /* ContentStore.swift */; };
 		9C69B3DC5BDEB35DA70CB1FD /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903A2643DCE220726BCA6CB6 /* Exercise.swift */; };
@@ -36,6 +39,7 @@
 		BB37F19EDA77303E7655B8EB /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA06D3D4EDDD58370361A59 /* MainTabView.swift */; };
 		BF389CB29BE95D4772BD3C83 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E446E7D54CA17891B26B769 /* Tab.swift */; };
 		C1A54C462D23F61234B18DA0 /* BreathCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1271B3AE2D83088E2A9091 /* BreathCard.swift */; };
+		D898A7C82B85832107DDBA27 /* verses.json in Resources */ = {isa = PBXBuildFile; fileRef = C542FC0EFD7ED7A297E84828 /* verses.json */; };
 		E1A6774C0121647DBADBD231 /* BreathSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1539C108D3114B3EFB3887 /* BreathSessionView.swift */; };
 		E58E1AB1FDDC7CDC74B38FA0 /* ExtraWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8498D945A6EB89FC538371 /* ExtraWorkout.swift */; };
 		EAE22227C2E3BB75E28647B2 /* VerseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90655435C71F25142BD03CFD /* VerseDetailView.swift */; };
@@ -48,6 +52,7 @@
 		034B2FAD387AF6C97B18B5CF /* BreathSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathSession.swift; sourceTree = "<group>"; };
 		04D878356FCC4351732A5062 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		0C8498D945A6EB89FC538371 /* ExtraWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraWorkout.swift; sourceTree = "<group>"; };
+		0EB17E130FDAE2D14C0A9635 /* curated_wods.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = curated_wods.json; sourceTree = "<group>"; };
 		220C800C27BA433ABD98D18F /* GodsWarriorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GodsWarriorApp.swift; sourceTree = "<group>"; };
 		2BE35BA5F9D311A0D7C3DA06 /* LibraryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTab.swift; sourceTree = "<group>"; };
 		2DFA972C3F84879BA14C316F /* BreathPhaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathPhaseType.swift; sourceTree = "<group>"; };
@@ -69,16 +74,19 @@
 		9883B89F3B479731ACBF3F24 /* NavigationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStore.swift; sourceTree = "<group>"; };
 		9A1271B3AE2D83088E2A9091 /* BreathCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathCard.swift; sourceTree = "<group>"; };
 		9D5D856EFD669DBC502E0767 /* WODType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODType.swift; sourceTree = "<group>"; };
+		9EE1F96E3E8163ABB7E226C4 /* breath_sessions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breath_sessions.json; sourceTree = "<group>"; };
 		9FDCD9C298A4FEBFED3A6449 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		A797D336E08E65AF9674E3A6 /* WODConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODConfig.swift; sourceTree = "<group>"; };
 		AD92313AFEEA76BC2D1E24FA /* SettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTab.swift; sourceTree = "<group>"; };
 		B60CDE58CCB575EE4C46580A /* WODExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODExercise.swift; sourceTree = "<group>"; };
 		BA323A1D93F69572D7C4B935 /* DailyLogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLogService.swift; sourceTree = "<group>"; };
 		C0EAED525440E9F98F876DA7 /* WODDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODDetailView.swift; sourceTree = "<group>"; };
+		C542FC0EFD7ED7A297E84828 /* verses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = verses.json; sourceTree = "<group>"; };
 		D0F662F1E3911B2BB27E99D4 /* GodsWarrior.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GodsWarrior.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1539C108D3114B3EFB3887 /* BreathSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathSessionView.swift; sourceTree = "<group>"; };
 		E078528E90AD0CFADA466F15 /* VerseRotationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseRotationService.swift; sourceTree = "<group>"; };
 		F4FE72320B7C787962C87B76 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
+		F6A72F58832350C41597294D /* exercises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
 		FD6E5801AAE57F6293AB38B7 /* WODCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODCard.swift; sourceTree = "<group>"; };
 		FE03422E7A2AF03DC66AF78B /* CalendarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +179,18 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		792382CD3F987A7969B0489F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9EE1F96E3E8163ABB7E226C4 /* breath_sessions.json */,
+				0EB17E130FDAE2D14C0A9635 /* curated_wods.json */,
+				F6A72F58832350C41597294D /* exercises.json */,
+				C542FC0EFD7ED7A297E84828 /* verses.json */,
+			);
+			name = Data;
+			path = GodsWarrior/Resources/Data;
+			sourceTree = "<group>";
+		};
 		7E2183A38526E7DB65AEF5DD /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +210,7 @@
 		85E2BD6E84E5B5889E0AC940 = {
 			isa = PBXGroup;
 			children = (
+				792382CD3F987A7969B0489F /* Data */,
 				8CF5DA6A49434847A164B527 /* GodsWarrior */,
 				6033BBE42B51CE033174A63C /* Products */,
 			);
@@ -378,6 +399,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				698ADC5EEE7F942840E712CC /* Assets.xcassets in Resources */,
+				0A0C042550005687DD172DBE /* breath_sessions.json in Resources */,
+				3D8B239620F48D47EC89EA63 /* curated_wods.json in Resources */,
+				8CDAD66BD89A9231FA0B8E77 /* exercises.json in Resources */,
+				D898A7C82B85832107DDBA27 /* verses.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

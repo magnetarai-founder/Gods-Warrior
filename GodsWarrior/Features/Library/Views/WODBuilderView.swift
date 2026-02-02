@@ -112,7 +112,7 @@ struct WODBuilderView: View {
                 }
             }
             .sheet(isPresented: $showExercisePicker) {
-                ExercisePickerView(exercises: contentStore.exercises) { exercise in
+                ExercisePickerView(exercises: contentStore.exerciseData) { exercise in
                     selectedExercises.append(WODExerciseBuilder(exercise: exercise, reps: 10))
                 }
             }
@@ -141,8 +141,12 @@ struct WODBuilderView: View {
         modelContext.insert(wod)
 
         for (index, builder) in selectedExercises.enumerated() {
+            // Convert ExerciseData to Exercise model
+            let exercise = builder.exercise.toExercise()
+            modelContext.insert(exercise)
+
             let wodExercise = WODExercise(
-                exercise: builder.exercise,
+                exercise: exercise,
                 reps: builder.reps,
                 duration: builder.duration,
                 order: index
@@ -160,7 +164,7 @@ struct WODBuilderView: View {
 
 struct WODExerciseBuilder: Identifiable {
     let id = UUID()
-    let exercise: Exercise
+    let exercise: ExerciseData
     var reps: Int?
     var duration: Int?
 }
@@ -168,17 +172,17 @@ struct WODExerciseBuilder: Identifiable {
 // MARK: - Exercise Picker View
 
 struct ExercisePickerView: View {
-    let exercises: [Exercise]
-    let onSelect: (Exercise) -> Void
+    let exercises: [ExerciseData]
+    let onSelect: (ExerciseData) -> Void
 
     @Environment(\.dismiss) private var dismiss
     @State private var searchText: String = ""
     @State private var selectedCategory: ExerciseCategory?
 
-    var filteredExercises: [Exercise] {
+    var filteredExercises: [ExerciseData] {
         var result = exercises
         if let category = selectedCategory {
-            result = result.filter { $0.category == category }
+            result = result.filter { $0.category == category.rawValue }
         }
         if !searchText.isEmpty {
             result = result.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
@@ -240,7 +244,7 @@ struct ExercisePickerView: View {
         }
     }
 
-    private func exerciseButton(for exercise: Exercise) -> some View {
+    private func exerciseButton(for exercise: ExerciseData) -> some View {
         Button {
             onSelect(exercise)
             dismiss()
@@ -249,13 +253,13 @@ struct ExercisePickerView: View {
         }
     }
 
-    private func exerciseRow(for exercise: Exercise) -> some View {
+    private func exerciseRow(for exercise: ExerciseData) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(exercise.name)
                     .font(.body.weight(.medium))
                     .foregroundStyle(.primary)
-                Text(exercise.category.displayName)
+                Text(exercise.category.capitalized)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

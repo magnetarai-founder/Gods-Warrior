@@ -6,13 +6,36 @@ struct HomeTab: View {
     @Environment(DailyLogService.self) private var dailyLogService
     @Environment(\.modelContext) private var modelContext
 
+    // MARK: - Computed Properties for Card Data
+
+    private var verseForCard: VerseData? {
+        if let verse = dailyLogService.todayLog?.verse {
+            return VerseData(from: verse)
+        }
+        return contentStore.todaysVerse
+    }
+
+    private var breathSessionForCard: BreathSessionData? {
+        if let session = dailyLogService.todayLog?.breathSession {
+            return BreathSessionData(from: session)
+        }
+        return contentStore.defaultBreathSession
+    }
+
+    private var wodForCard: WODData? {
+        if let wod = dailyLogService.todayLog?.wod {
+            return WODData(from: wod)
+        }
+        return contentStore.todaysWOD
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
                     // Verse Card
                     VerseCard(
-                        verse: dailyLogService.todayLog?.verse ?? contentStore.todaysVerse,
+                        verse: verseForCard,
                         hasNote: dailyLogService.todayLog?.verseNote != nil
                     )
                     .onTapGesture {
@@ -21,22 +44,22 @@ struct HomeTab: View {
 
                     // Breath Card
                     BreathCard(
-                        session: dailyLogService.todayLog?.breathSession ?? contentStore.defaultBreathSession,
+                        session: breathSessionForCard,
                         isCompleted: dailyLogService.todayLog?.breathCompleted ?? false
                     )
                     .onTapGesture {
-                        if let session = dailyLogService.todayLog?.breathSession ?? contentStore.defaultBreathSession {
+                        if let session = dailyLogService.todayLog?.breathSession {
                             navigationStore.openBreathSession(session)
                         }
                     }
 
                     // WOD Card
                     WODCard(
-                        wod: dailyLogService.todayLog?.wod ?? contentStore.todaysWOD,
+                        wod: wodForCard,
                         isCompleted: dailyLogService.todayLog?.wodCompleted ?? false
                     )
                     .onTapGesture {
-                        if let wod = dailyLogService.todayLog?.wod ?? contentStore.todaysWOD {
+                        if let wod = dailyLogService.todayLog?.wod {
                             navigationStore.openWODDetail(wod)
                         }
                     }

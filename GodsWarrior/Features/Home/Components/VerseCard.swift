@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VerseCard: View {
-    let verse: Verse?
+    let verse: VerseData?
     let hasNote: Bool
 
     var body: some View {

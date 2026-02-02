@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WODCard: View {
-    let wod: WOD?
+    let wod: WODData?
     let isCompleted: Bool
 
     var body: some View {
@@ -51,9 +51,9 @@ struct WODCard: View {
                 }
 
                 // Exercise preview
-                if !wod.sortedExercises.isEmpty {
+                if !wod.exercises.isEmpty {
                     VStack(alignment: .leading, spacing: 4) {
-                        ForEach(wod.sortedExercises.prefix(3)) { exercise in
+                        ForEach(wod.exercises.prefix(3)) { exercise in
                             Text(exercise.displayString)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)

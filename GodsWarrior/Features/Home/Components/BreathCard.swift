@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BreathCard: View {
-    let session: BreathSession?
+    let session: BreathSessionData?
     let isCompleted: Bool
 
     var body: some View {

@@ -7,8 +7,11 @@ struct VerseDetailView: View {
 
     @State private var noteText: String = ""
 
-    private var verse: Verse? {
-        dailyLogService.todayLog?.verse ?? contentStore.todaysVerse
+    private var verse: VerseData? {
+        if let logVerse = dailyLogService.todayLog?.verse {
+            return VerseData(from: logVerse)
+        }
+        return contentStore.todaysVerse
     }
 
     var body: some View {
