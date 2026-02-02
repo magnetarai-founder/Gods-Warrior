@@ -3,10 +3,12 @@ import SwiftUI
 struct CalendarTab: View {
     @Environment(DailyLogService.self) private var dailyLogService
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
 
     @State private var selectedMonth: Date = Date()
     @State private var monthLogs: [LogEntry] = []
     @State private var selectedDay: Date?
+    @State private var refreshTrigger: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -37,6 +39,18 @@ struct CalendarTab: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear { loadMonthLogs() }
             .onChange(of: selectedMonth) { _, _ in loadMonthLogs() }
+            .onChange(of: scenePhase) { _, newPhase in
+                // Refresh when app becomes active
+                if newPhase == .active {
+                    loadMonthLogs()
+                }
+            }
+            .onChange(of: selectedDay) { _, newDay in
+                // Refresh after viewing day details (they might have changed)
+                if newDay == nil {
+                    loadMonthLogs()
+                }
+            }
             .sheet(item: $selectedDay) { day in
                 DayLogDetailSheet(date: day)
             }
@@ -221,12 +235,51 @@ extension Date: @retroactive Identifiable {
 
 struct DayLogDetailSheet: View {
     @Environment(DailyLogService.self) private var dailyLogService
+    @Environment(ContentStore.self) private var contentStore
     @Environment(\.dismiss) private var dismiss
 
     let date: Date
 
     @State private var log: LogEntry?
     @State private var noteText: String = ""
+
+    // MARK: - Computed Content Properties
+
+    private var verseData: VerseData? {
+        // Check custom verse first
+        if let verse = log?.verse {
+            return VerseData(from: verse)
+        }
+        // Then curated ID
+        if let verseId = log?.curatedVerseId {
+            return contentStore.verseData.first { $0.id == verseId }
+        }
+        return nil
+    }
+
+    private var breathSessionName: String? {
+        // Check custom session first
+        if let session = log?.breathSession {
+            return session.name
+        }
+        // Then curated ID
+        if let sessionId = log?.curatedBreathSessionId {
+            return contentStore.breathSessionData.first { $0.id == sessionId }?.name
+        }
+        return nil
+    }
+
+    private var wodName: String? {
+        // Check custom WOD first
+        if let wod = log?.wod {
+            return wod.name
+        }
+        // Then curated ID
+        if let wodId = log?.curatedWodId {
+            return contentStore.wodData.first { $0.id == wodId }?.name
+        }
+        return nil
+    }
 
     var body: some View {
         NavigationStack {
@@ -239,11 +292,14 @@ struct DayLogDetailSheet: View {
 
                 // Verse Section
                 Section("Verse") {
-                    if let verse = log?.verse {
+                    if let verse = verseData {
                         Text(verse.text)
                             .font(.body)
                         Text(verse.reference)
                             .font(.caption)
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("No verse assigned")
                             .foregroundStyle(.secondary)
                     }
 
@@ -254,8 +310,8 @@ struct DayLogDetailSheet: View {
                 // Breath Section
                 Section("Breath") {
                     HStack {
-                        if let session = log?.breathSession {
-                            Text(session.name)
+                        if let name = breathSessionName {
+                            Text(name)
                         } else {
                             Text("Not started")
                                 .foregroundStyle(.secondary)
@@ -271,8 +327,8 @@ struct DayLogDetailSheet: View {
                 // WOD Section
                 Section("Workout") {
                     HStack {
-                        if let wod = log?.wod {
-                            Text(wod.name)
+                        if let name = wodName {
+                            Text(name)
                         } else {
                             Text("Not started")
                                 .foregroundStyle(.secondary)

@@ -11,15 +11,24 @@ final class LogEntry {
     var date: Date  // Normalized to midnight
 
     // MARK: - Verse Section
+    /// Curated verse ID (from bundled JSON)
+    var curatedVerseId: String?
+    /// User-created verse (SwiftData model)
     var verse: Verse?
     var verseNote: String?
 
     // MARK: - Breath Section
+    /// Curated breath session ID (from bundled JSON)
+    var curatedBreathSessionId: String?
+    /// User-created breath session (SwiftData model)
     var breathSession: BreathSession?
     var breathCompleted: Bool
     var breathCompletedAt: Date?
 
     // MARK: - WOD Section
+    /// Curated WOD ID (from bundled JSON)
+    var curatedWodId: String?
+    /// User-created WOD (SwiftData model)
     var wod: WOD?
     var wodCompleted: Bool
     var wodCompletedAt: Date?
@@ -54,16 +63,31 @@ final class LogEntry {
         breathCompleted && wodCompleted
     }
 
+    /// Whether this entry has a verse (curated or custom)
+    var hasVerse: Bool {
+        curatedVerseId != nil || verse != nil
+    }
+
+    /// Whether this entry has a breath session (curated or custom)
+    var hasBreathSession: Bool {
+        curatedBreathSessionId != nil || breathSession != nil
+    }
+
+    /// Whether this entry has a WOD (curated or custom)
+    var hasWOD: Bool {
+        curatedWodId != nil || wod != nil
+    }
+
     var completionPercentage: Double {
         var completed = 0
         var total = 0
 
-        if breathSession != nil {
+        if hasBreathSession {
             total += 1
             if breathCompleted { completed += 1 }
         }
 
-        if wod != nil {
+        if hasWOD {
             total += 1
             if wodCompleted { completed += 1 }
         }
@@ -79,10 +103,13 @@ final class LogEntry {
 
     init(
         date: Date,
+        curatedVerseId: String? = nil,
         verse: Verse? = nil,
         verseNote: String? = nil,
+        curatedBreathSessionId: String? = nil,
         breathSession: BreathSession? = nil,
         breathCompleted: Bool = false,
+        curatedWodId: String? = nil,
         wod: WOD? = nil,
         wodCompleted: Bool = false,
         notes: String? = nil
@@ -90,10 +117,13 @@ final class LogEntry {
         self.id = UUID()
         self.date = Calendar.current.startOfDay(for: date)
         self.dateKey = Self.dateKeyFormatter.string(from: date)
+        self.curatedVerseId = curatedVerseId
         self.verse = verse
         self.verseNote = verseNote
+        self.curatedBreathSessionId = curatedBreathSessionId
         self.breathSession = breathSession
         self.breathCompleted = breathCompleted
+        self.curatedWodId = curatedWodId
         self.wod = wod
         self.wodCompleted = wodCompleted
         self.notes = notes

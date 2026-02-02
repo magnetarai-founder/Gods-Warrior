@@ -10,6 +10,7 @@ private let logger = Logger(subsystem: "com.godswarrior", category: "DailyLogSer
 @Observable
 final class DailyLogService {
     private let modelContext: ModelContext
+    private weak var contentStore: ContentStore?
 
     // MARK: - Published State
 
@@ -17,9 +18,43 @@ final class DailyLogService {
 
     // MARK: - Initialization
 
-    init(modelContext: ModelContext) {
+    init(modelContext: ModelContext, contentStore: ContentStore? = nil) {
         self.modelContext = modelContext
+        self.contentStore = contentStore
         loadTodayLog()
+    }
+
+    /// Called after contentStore is set to initialize today's content
+    func initializeTodayContent(with contentStore: ContentStore) {
+        self.contentStore = contentStore
+        guard let log = todayLog else { return }
+
+        // Set today's curated verse if not already set
+        if log.curatedVerseId == nil && log.verse == nil {
+            if let verse = contentStore.todaysVerse {
+                log.curatedVerseId = verse.id
+                log.touch()
+            }
+        }
+
+        // Set today's curated WOD if not already set
+        if log.curatedWodId == nil && log.wod == nil {
+            if let wod = contentStore.todaysWOD {
+                log.curatedWodId = wod.id
+                log.touch()
+            }
+        }
+
+        // Set default breath session if not already set
+        if log.curatedBreathSessionId == nil && log.breathSession == nil {
+            if let session = contentStore.defaultBreathSession {
+                log.curatedBreathSessionId = session.id
+                log.touch()
+            }
+        }
+
+        saveContext()
+        logger.info("Initialized today's content: verse=\(log.curatedVerseId ?? "nil"), wod=\(log.curatedWodId ?? "nil"), breath=\(log.curatedBreathSessionId ?? "nil")")
     }
 
     // MARK: - Fetch or Create Today's Entry
@@ -56,8 +91,16 @@ final class DailyLogService {
 
     // MARK: - Verse Operations
 
+    func setCuratedVerse(_ verseId: String, for entry: LogEntry) {
+        entry.curatedVerseId = verseId
+        entry.verse = nil  // Clear any custom verse
+        entry.touch()
+        saveContext()
+    }
+
     func setVerse(_ verse: Verse, for entry: LogEntry) {
         entry.verse = verse
+        entry.curatedVerseId = nil  // Clear curated when using custom
         entry.touch()
         saveContext()
     }
@@ -70,8 +113,16 @@ final class DailyLogService {
 
     // MARK: - Breath Operations
 
+    func setCuratedBreathSession(_ sessionId: String, for entry: LogEntry) {
+        entry.curatedBreathSessionId = sessionId
+        entry.breathSession = nil  // Clear any custom session
+        entry.touch()
+        saveContext()
+    }
+
     func setBreathSession(_ session: BreathSession, for entry: LogEntry) {
         entry.breathSession = session
+        entry.curatedBreathSessionId = nil  // Clear curated when using custom
         entry.touch()
         saveContext()
     }
@@ -86,8 +137,16 @@ final class DailyLogService {
 
     // MARK: - WOD Operations
 
+    func setCuratedWOD(_ wodId: String, for entry: LogEntry) {
+        entry.curatedWodId = wodId
+        entry.wod = nil  // Clear any custom WOD
+        entry.touch()
+        saveContext()
+    }
+
     func setWOD(_ wod: WOD, for entry: LogEntry) {
         entry.wod = wod
+        entry.curatedWodId = nil  // Clear curated when using custom
         entry.touch()
         saveContext()
     }
@@ -154,7 +213,10 @@ final class DailyLogService {
         for entry in entries {
             if entry.date == expectedDate && entry.isFullyCompleted {
                 streak += 1
-                expectedDate = Calendar.current.date(byAdding: .day, value: -1, to: expectedDate)!
+                guard let previousDate = Calendar.current.date(byAdding: .day, value: -1, to: expectedDate) else {
+                    break
+                }
+                expectedDate = previousDate
             } else if entry.date < expectedDate {
                 break
             }

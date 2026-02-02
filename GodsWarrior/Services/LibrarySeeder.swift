@@ -9,12 +9,10 @@ struct LibrarySeeder {
     let modelContext: ModelContext
 
     func seedIfNeeded() throws {
-        // Check if already seeded
-        let verseDescriptor = FetchDescriptor<Verse>(
-            predicate: #Predicate { $0.isLibrary == true }
-        )
+        // Check if already seeded by looking for UserSettings
+        let settingsDescriptor = FetchDescriptor<UserSettings>()
 
-        if try modelContext.fetchCount(verseDescriptor) > 0 {
+        if try modelContext.fetchCount(settingsDescriptor) > 0 {
             logger.info("Library content already seeded")
             return
         }

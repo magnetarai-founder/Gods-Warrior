@@ -9,23 +9,44 @@ struct HomeTab: View {
     // MARK: - Computed Properties for Card Data
 
     private var verseForCard: VerseData? {
-        if let verse = dailyLogService.todayLog?.verse {
+        let log = dailyLogService.todayLog
+        // First check for custom verse (SwiftData model)
+        if let verse = log?.verse {
             return VerseData(from: verse)
         }
+        // Then check for curated verse ID on log
+        if let verseId = log?.curatedVerseId {
+            return contentStore.verseData.first { $0.id == verseId }
+        }
+        // Fallback to today's verse from content store
         return contentStore.todaysVerse
     }
 
     private var breathSessionForCard: BreathSessionData? {
-        if let session = dailyLogService.todayLog?.breathSession {
+        let log = dailyLogService.todayLog
+        // First check for custom session (SwiftData model)
+        if let session = log?.breathSession {
             return BreathSessionData(from: session)
         }
+        // Then check for curated session ID on log
+        if let sessionId = log?.curatedBreathSessionId {
+            return contentStore.breathSessionData.first { $0.id == sessionId }
+        }
+        // Fallback to default session from content store
         return contentStore.defaultBreathSession
     }
 
     private var wodForCard: WODData? {
-        if let wod = dailyLogService.todayLog?.wod {
+        let log = dailyLogService.todayLog
+        // First check for custom WOD (SwiftData model)
+        if let wod = log?.wod {
             return WODData(from: wod)
         }
+        // Then check for curated WOD ID on log
+        if let wodId = log?.curatedWodId {
+            return contentStore.wodData.first { $0.id == wodId }
+        }
+        // Fallback to today's WOD from content store
         return contentStore.todaysWOD
     }
 
@@ -112,6 +133,10 @@ struct HomeTab: View {
                 } else if let wodData = navigationStore.selectedWODData {
                     WODDetailView(wod: wodData)
                 }
+            }
+            .onAppear {
+                // Initialize today's log entry with curated content
+                dailyLogService.initializeTodayContent(with: contentStore)
             }
         }
     }

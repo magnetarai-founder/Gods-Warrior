@@ -76,12 +76,14 @@ struct SettingsTab: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    Link(destination: URL(string: "https://example.com/privacy")!) {
-                        HStack {
-                            Text("Privacy Policy")
-                            Spacer()
-                            Image(systemName: "arrow.up.right.square")
-                                .foregroundStyle(.secondary)
+                    if let privacyURL = URL(string: "https://example.com/privacy") {
+                        Link(destination: privacyURL) {
+                            HStack {
+                                Text("Privacy Policy")
+                                Spacer()
+                                Image(systemName: "arrow.up.right.square")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                     }
                 }

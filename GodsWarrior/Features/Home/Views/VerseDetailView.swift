@@ -8,9 +8,16 @@ struct VerseDetailView: View {
     @State private var noteText: String = ""
 
     private var verse: VerseData? {
-        if let logVerse = dailyLogService.todayLog?.verse {
+        let log = dailyLogService.todayLog
+        // First check for custom verse (SwiftData model)
+        if let logVerse = log?.verse {
             return VerseData(from: logVerse)
         }
+        // Then check for curated verse ID on log
+        if let verseId = log?.curatedVerseId {
+            return contentStore.verseData.first { $0.id == verseId }
+        }
+        // Fallback to today's verse
         return contentStore.todaysVerse
     }
 

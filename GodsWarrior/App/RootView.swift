@@ -22,7 +22,9 @@ struct RootView: View {
             }
         }
         .onAppear {
-            dailyLogService = DailyLogService(modelContext: modelContext)
+            let service = DailyLogService(modelContext: modelContext)
+            service.initializeTodayContent(with: contentStore)
+            dailyLogService = service
         }
     }
 }
